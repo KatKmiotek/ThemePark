@@ -1,72 +1,36 @@
-import attractions.Dodgems;
-import attractions.Park;
-import attractions.Playground;
-import attractions.RollerCoaster;
+import attractions.*;
 import behaviours.IReviewed;
 import people.Visitor;
-import stalls.CandyflossStall;
-import stalls.IceCreamStall;
-import stalls.ParkingSpot;
-import stalls.TobaccoStall;
+import stalls.*;
 
 import java.util.ArrayList;
 
 public class ThemePark {
-    Dodgems dodgems;
-    Park park;
-    Playground playground;
-    RollerCoaster rollerCoaster;
-    CandyflossStall candyflossStall;
-    IceCreamStall iceCreamStall;
-    ParkingSpot parkingSpot;
-    TobaccoStall tobaccoStall;
 
-
+    private ArrayList<Attraction> attractions;
+    private ArrayList<Stall> stalls;
     private ArrayList<IReviewed> reviewedAttractions;
-    public ThemePark(Dodgems dodgems, Park park, Playground playground, RollerCoaster rollerCoaster, CandyflossStall candyflossStall, IceCreamStall iceCreamStall, ParkingSpot parkingSpot, TobaccoStall tobaccoStall){
-        this.dodgems = dodgems;
-        this.park = park;
-        this.playground = playground;
-        this.rollerCoaster = rollerCoaster;
-        this.candyflossStall = candyflossStall;
-        this.iceCreamStall = iceCreamStall;
-        this.parkingSpot = parkingSpot;
-        this.tobaccoStall = tobaccoStall;
+
+    public ThemePark(){
+        this.attractions = new ArrayList<Attraction>();
+        this.stalls = new ArrayList<Stall>();
         this.reviewedAttractions = new ArrayList<IReviewed>();
-
-
     }
 
-    public Dodgems getDodgems() {
-        return dodgems;
+    public ArrayList<Attraction> getAttractions() {
+        return attractions;
     }
 
-    public Park getPark() {
-        return park;
+    public void setAttractions(ArrayList<Attraction> attractions) {
+        this.attractions = attractions;
     }
 
-    public Playground getPlayground() {
-        return playground;
+    public ArrayList<Stall> getStalls() {
+        return stalls;
     }
 
-    public RollerCoaster getRollerCoaster() {
-        return rollerCoaster;
-    }
-
-    public CandyflossStall getCandyflossStall() {
-        return candyflossStall;
-    }
-
-    public IceCreamStall getIceCreamStall() {
-        return iceCreamStall;
-    }
-
-    public ParkingSpot getParkingSpot() {
-        return parkingSpot;
-    }
-
-    public TobaccoStall getTobaccoStall() {
-        return tobaccoStall;
+    public void setStalls(ArrayList<Stall> stalls) {
+        this.stalls = stalls;
     }
 
     public ArrayList<IReviewed> getReviewedAttractions() {
@@ -76,4 +40,18 @@ public class ThemePark {
     public void setReviewedAttractions(ArrayList<IReviewed> reviewedAttractions) {
         this.reviewedAttractions = reviewedAttractions;
     }
+
+    public ArrayList<IReviewed> getAllReviewed(){
+        for(Attraction attraction : attractions){
+            reviewedAttractions.add(attraction);
+        }
+        for(Stall stall : stalls){
+            reviewedAttractions.add(stall);
+        }
+        return reviewedAttractions;
+    }
+//    public void visit(Visitor visitor){
+//        Attraction attraction = attractions.get(0);
+//        attraction.getVisitCount()++;
+//    }
 }
