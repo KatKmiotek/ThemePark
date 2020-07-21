@@ -6,31 +6,24 @@ import stalls.*;
 import java.util.ArrayList;
 
 public class ThemePark {
-
-    private ArrayList<Attraction> attractions;
-    private ArrayList<Stall> stalls;
+    Dodgems dodgems;
+    Park park;
+    Playground playground;
+    RollerCoaster rollerCoaster;
+    CandyflossStall candyflossStall;
+    IceCreamStall iceCreamStall;
+    TobaccoStall tobaccoStall;
     private ArrayList<IReviewed> reviewedAttractions;
 
-    public ThemePark(){
-        this.attractions = new ArrayList<Attraction>();
-        this.stalls = new ArrayList<Stall>();
+    public ThemePark(Dodgems dodgems, Park park, Playground playground, RollerCoaster rollerCoaster, CandyflossStall candyflossStall, IceCreamStall iceCreamStall, TobaccoStall tobaccoStall){
+        this.dodgems = dodgems;
+        this.park = park;
+        this.playground = playground;
+        this.rollerCoaster = rollerCoaster;
+        this.candyflossStall = candyflossStall;
+        this.iceCreamStall = iceCreamStall;
+        this.tobaccoStall = tobaccoStall;
         this.reviewedAttractions = new ArrayList<IReviewed>();
-    }
-
-    public ArrayList<Attraction> getAttractions() {
-        return attractions;
-    }
-
-    public void setAttractions(ArrayList<Attraction> attractions) {
-        this.attractions = attractions;
-    }
-
-    public ArrayList<Stall> getStalls() {
-        return stalls;
-    }
-
-    public void setStalls(ArrayList<Stall> stalls) {
-        this.stalls = stalls;
     }
 
     public ArrayList<IReviewed> getReviewedAttractions() {
@@ -40,18 +33,14 @@ public class ThemePark {
     public void setReviewedAttractions(ArrayList<IReviewed> reviewedAttractions) {
         this.reviewedAttractions = reviewedAttractions;
     }
-
-    public ArrayList<IReviewed> getAllReviewed(){
-        for(Attraction attraction : attractions){
-            reviewedAttractions.add(attraction);
-        }
-        for(Stall stall : stalls){
-            reviewedAttractions.add(stall);
-        }
-        return reviewedAttractions;
-    }
-//    public void visit(Visitor visitor){
-//        Attraction attraction = attractions.get(0);
-//        attraction.getVisitCount()++;
+//    public void getAllReviewed(){
+//        for(IReviewed attraction : ){
+//            reviewedAttractions.add(attraction);
+//        }
 //    }
+
+    public void visit(Visitor visitor, Attraction visitedAttraction){
+        visitedAttraction.addVisit();
+        visitor.addAttraction(visitedAttraction);
+    }
 }

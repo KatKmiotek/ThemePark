@@ -26,9 +26,8 @@ public abstract class Attraction implements IReviewed {
         return visitCount;
     }
 
-    public boolean reviewed(){
-        return true;
+
+    public void addVisit(){
+        visitCount++;
     }
-
-
 }
